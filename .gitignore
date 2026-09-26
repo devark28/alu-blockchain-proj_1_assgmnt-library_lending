@@ -1,0 +1,5 @@
+docs/
+q1_library_lending/library_tracker
+q1_library_lending/chain.txt
+q1_library_lending/keys/
+*.o
