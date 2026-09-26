@@ -170,13 +170,13 @@ Screenshots are in [images/](images/):
 
 | File | Shows |
 |---|---|
-| `images/01_first_run.png` | key generation and genesis block |
-| `images/02_registries.png` | loaded books and members with loan status |
-| `images/03_borrow.png` | a successful borrow and its block hash |
-| `images/04_invalid_ids.png` | `ERROR: Book or Member not found` for bad IDs |
-| `images/05_return.png` | a return, and the errors for returning a book that is not on loan |
-| `images/06_records.png` | lending records with signature validity |
-| `images/07_validate.png` | a valid chain |
-| `images/08_tamper_demo.png` | option 7, both steps |
-| `images/09_file_tamper.png` | startup warning after editing `chain.txt` |
-| `images/10_missing_registry.png` | error when `books.txt` is missing or empty |
+| [images/01_first_run.png](images/01_first_run.png) | key generation and genesis block |
+| [images/02_registries.png](images/02_registries.png) | loaded books and members with loan status |
+| [images/03_borrow.png](images/03_borrow.png) | a successful borrow and its block hash |
+| [images/04_invalid_ids.png](images/04_invalid_ids.png) | `ERROR: Book or Member not found` for bad IDs |
+| [images/05_return.png](images/05_return.png) | a return, and the errors for returning a book that is not on loan |
+| [images/06_records.png](images/06_records.png) | lending records with signature validity |
+| [images/07_validate.png](images/07_validate.png) | a valid chain |
+| [images/08_tamper_demo.png](images/08_tamper_demo.png) | option 7, both steps |
+| [images/09_file_tamper.png](images/09_file_tamper.png) | startup warning after editing `chain.txt` |
+| [images/10_missing_registry.png](images/10_missing_registry.png) | error when `books.txt` is missing or empty |
