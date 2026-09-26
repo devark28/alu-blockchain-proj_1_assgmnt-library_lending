@@ -97,11 +97,11 @@ typedef struct {
 } Block;
 ```
 
-This follows the requirement's table, with two small notes:
+The fields follow the required block layout, with two small notes:
 
 - **`signature_len` was added.** An ECDSA signature is DER encoded, a
   format whose length depends on the values of the two numbers inside it.
-  On `secp256k1` it is at most 72 bytes (which is why the example's
+  On `secp256k1` it is at most 72 bytes (which is why the
   array is 72) and in practice varies between 70 and 72. Without storing the length,
   verification would not know how many of the 72 bytes are the signature.
   In a sample `chain.txt`, signatures start with `3044`, `3045` and
@@ -155,12 +155,11 @@ out and pasted into a different place.
 
 Because the hash includes the signature, changing or stripping the
 signature changes the hash, which breaks the link from the next block.
-This is the order the requirements describes ("create the block, sign it,
-compute its hash").
+The order is: create the block, sign it, then compute its hash.
 
 ### Why ECDSA on secp256k1
 
-ECDSA is specified and a 72-byte signature field. 72 bytes is
+Signatures use ECDSA with a 72-byte signature field. 72 bytes is
 the maximum DER signature size for 256-bit curves, and `secp256k1` is the
 curve used by Bitcoin and Ethereum for transaction signatures, so it is
 the natural choice for a blockchain project. OpenSSL 3's
@@ -296,7 +295,7 @@ Option 7 runs a two-step attack on a copy of the chain in memory
 
 **Step 1: naive edit.** The chosen block's action is flipped, for
 example `BORROWED` to `RETURNED` (the "quietly mark a lost book as
-returned" scenario from the example). Validation shows:
+returned" scenario). Validation shows:
 
 ```
 Block 1    index OK    hash FAIL  link OK    signature FAIL  <-- TAMPERED
@@ -320,8 +319,8 @@ Block 2    index OK    hash OK    link OK    signature FAIL  <-- TAMPERED
 Block 3    index OK    hash OK    link OK    signature FAIL  <-- TAMPERED
 ```
 
-Every hash and link is consistent again, so the two checks the requirements
-lists would both pass. Only the signatures catch it: block 1's signed
+Every hash and link is consistent again, so the hash and link checks
+would both pass. Only the signatures catch it: block 1's signed
 data changed, and blocks 2 and 3 now have a different `previous_hash`
 from the one that was signed. Making them valid again would need the
 librarian's private key.
